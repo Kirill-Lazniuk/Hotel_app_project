@@ -36,15 +36,20 @@ class ReservationTicket:
 df = pd.read_csv("hotel.csv")
 print(df)
 
-hotel_id = input("Enter the ID of the hotel")
-hotel = Hotel(hotel_id)
+def main():
+    hotel_id = input("Enter the ID of the hotel")
+    hotel = Hotel(hotel_id)
 
-if hotel.available():
-    hotel.booking()
-    customer_name = input("Enter you name: ")
-    reservation_ticket = ReservationTicket(
+    if hotel.available():
+        hotel.booking()
+        customer_name = input("Enter you name: ")
+        reservation_ticket = ReservationTicket(
         customer_name=customer_name, 
         hotel_obj=hotel,)
-    reservation_ticket.generate()
-else:
-    print("Sorry, the hotel is not available for booking...")
+        reservation_ticket.generate()
+    else:
+        print("Sorry, the hotel is not available for booking...")
+
+
+if __name__ == "__main__":
+    main() 
